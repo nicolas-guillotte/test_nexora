@@ -16,8 +16,8 @@ class CoreController
         global $router;
 
         // $viewData est disponible dans chaque fichier de vue
-        require_once __DIR__ . '/../Views/templates/header.tpl.php';
+        require_once __DIR__ . '/../Views/header.tpl.php';
         require_once __DIR__ . '/../Views/' . $viewName . '.php';
-        require_once __DIR__ . '/../Views/templates/footer.tpl.php';
+        require_once __DIR__ . '/../Views/footer.tpl.php';
     }
 }

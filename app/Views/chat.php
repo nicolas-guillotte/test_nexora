@@ -33,14 +33,17 @@
     </div>
   </section>
   <section class="send flex-grow-1 d-flex flex-column justify-content-end">
-    <div class="form-floating">
-      <textarea
-        class="form-control"
-        placeholder="Leave a comment here"
-        id="floatingTextarea"
-      ></textarea>
-      <label for="floatingTextarea">Message</label>
-    </div>
+    <form action="" method="post"> <!-- Remplacez "traiter_message.php" par le nom du script côté serveur qui traitera le message -->
+      <div class="form-floating">
+        <textarea
+          class="form-control"
+          placeholder="Leave a comment here"
+          id="floatingTextarea"
+          name="message" <!-- Ajoutez un attribut name pour récupérer la valeur côté serveur --></textarea>
+        <label for="floatingTextarea">Message</label>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+    </form>
   </section>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

@@ -1,8 +1,10 @@
 <body class="d-flex flex-column">
+<a href="<?= $router->generate('logout') ?>" class="btn btn-danger">Se déconnecter</a>
 
 <?php foreach ($viewData["users"] as $user) : ?>
 
   <section class="user margined">
+    <a href="<?= $router->generate('chat', ['id' => $user->getId()]) ?>"">
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-3 offset-left"> <!-- Utilisation de la classe offset-left pour décaler vers la gauche -->
@@ -21,6 +23,7 @@
         </div>
       </div>
     </div>
+    </a>
   </section>
 
   <?php endforeach ?>

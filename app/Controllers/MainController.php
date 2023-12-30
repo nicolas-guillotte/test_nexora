@@ -15,32 +15,6 @@ class MainController extends CoreController
         ]);
     }
 
-    public function login()
-    {
-        // on a besoin de la liste des utilisateurs
-        $userModel = new User();
-        $users = $userModel->findAll();
-
-        // on appelle la méthode show pour afficher notre vue
-        $this->show('login', [
-            "pageTitle" => "Nexora - Connexion",
-            "users" => $users
-        ]);
-    }
-
-    public function register()
-    {
-        // on a besoin de la liste des utilisateurs
-        $userModel = new User();
-        $users = $userModel->findAll();
-
-        // on appelle la méthode show pour afficher notre vue
-        $this->show('register', [
-            "pageTitle" => "Nexora - Création",
-            "users" => $users
-        ]);
-    }
-
     public function test()
     {
         $messageModel = new Message();

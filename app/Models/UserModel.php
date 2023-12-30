@@ -6,6 +6,7 @@ class User extends CoreModel
     private $firstname;
     private $lastname;
     private $picture;
+    private $email;
 
     // Active Record : des méthodes utilitaires (find(), findAll(), etc.) pour récupérer des enregistrements depuis la BDD
 
@@ -27,6 +28,47 @@ class User extends CoreModel
         $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, "User");
         return $results;
     }
+
+    public function insert(User $user)
+    {
+        $pdo = Database::getPDO();
+    
+        $sql = "
+            INSERT INTO `user` (firstname, lastname, email, picture, password)
+            VALUES (:firstname, :lastname, :email, :picture, :password)
+        ";
+    
+        $stmt = $pdo->prepare($sql);
+    
+        $firstnameValue = $user->getFirstname();
+        $lastnameValue = $user->getLastname();
+        $emailValue = $user->getEmail();
+        $passwordValue = $user->getPassword();
+        $pictureValue = $user->getPicture();
+    
+        $stmt->bindParam(':firstname', $firstnameValue);
+        $stmt->bindParam(':lastname', $lastnameValue);
+        $stmt->bindParam(':email', $emailValue);
+        $stmt->bindParam(':password', $passwordValue);
+        $stmt->bindParam(':picture', $pictureValue);
+    
+        $status = $stmt->execute();
+    
+        return $status;
+    }
+    
+    public function findByEmail($email)
+    {
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `user` WHERE `email` = :email";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetchObject("User");
+
+        return $result;
+    }
+    
 
     /**
      * Get the value of password
@@ -104,6 +146,26 @@ class User extends CoreModel
     public function setPicture($picture)
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -8,7 +8,7 @@ class ErrorController extends CoreController
         http_response_code(404);
         
         $this->show('error404', [
-            "pageTitle" => "Oshop - page non trouvée"
+            "pageTitle" => "Nexora - page non trouvée"
         ]);
     }
 }
