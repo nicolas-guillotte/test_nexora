@@ -133,15 +133,16 @@ class UserController extends CoreController
     public function logout()
     {
         global $router;
-
+    
         // Détruire la session
         session_destroy();
-
+    
         // Rediriger vers la page d'accueil ou une autre page après la déconnexion
-        $homeUrl = $router->generate('login');
-        $absoluteUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $homeUrl;
+        $loginUrl = $router->generate('login');
+        $absoluteUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $loginUrl;
         header('Location: ' . $absoluteUrl);
         exit;
     }
+    
   
 }

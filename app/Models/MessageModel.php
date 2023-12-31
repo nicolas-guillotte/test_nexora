@@ -24,18 +24,16 @@ class Message extends CoreModel
         return $results;
     }
 
-    public function getMessagesBySenderId($sender_id)
-    {
-        // Supposons que vous ayez une colonne "sender_id" dans votre table "messages"
-        $sql = "SELECT * FROM `message` WHERE `sender_id` = :sender_id";
-        $params = [":sender_id" => $sender_id];
-
-        $statement = $this->db->prepare($sql);
-        $statement->execute($params);
-
-        // Récupérez les résultats comme un tableau associatif
-        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+    public function getMessagesForChat($sender_id, $receiver_id) {
+        $pdo = Database::getPDO();
+        $sql = "SELECT *
+                FROM message
+                WHERE (sender_id = $sender_id AND receiver_id = $receiver_id)
+                OR (sender_id = $receiver_id AND receiver_id = $sender_id)
+                ORDER BY created_at ASC;
+        ";
+        $pdoStatement = $pdo->query($sql);
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, "Message");
         return $results;
     }
 

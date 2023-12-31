@@ -1,4 +1,5 @@
 <body class="d-flex flex-column">
+<a href="<?= $router->generate('home') ?>" class="btn btn-success">Retour à l'accueil</a>
   <section class="user margined">
     <div class="container mt-5">
       <div class="row">
@@ -21,18 +22,15 @@
     </div>
   </section>
   <section class="messages">
-    <div class="user-message margined"> <!-- Utilisation de la classe user-message pour décaler vers la gauche -->
-      <div class="alert alert-info">
-        A simple info alert—check it out!
-      </div>
-    </div>
-    <div class="other-message margined"> <!-- Utilisation de la classe other-message pour décaler vers la droite -->
-      <div class="alert alert-light">
-        A simple light alert—check it out!
-      </div>
-    </div>
-  </section>
-  <section class="send flex-grow-1 d-flex flex-column justify-content-end">
+    <?php foreach ($viewData['messages'] as $message) : ?>
+        <div class="<?= ($_SESSION['user_id'] === $message->getSender_id()) ? 'user-message margined' : 'other-message margined'; ?>">
+            <div class="<?= ($_SESSION['user_id'] === $message->getSender_id()) ? 'alert alert-info' : 'alert alert-light'; ?>">
+                <?= $message->getText(); ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</section>
+<section class="send flex-grow-1 d-flex flex-column justify-content-end">
     <form action="" method="post"> <!-- Remplacez "traiter_message.php" par le nom du script côté serveur qui traitera le message -->
       <div class="form-floating">
         <textarea
@@ -44,7 +42,8 @@
       </div>
       <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
     </form>
-  </section>
+</section>
+
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

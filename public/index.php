@@ -17,7 +17,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 session_start(); // Démarrage de la session
 
-
 // Ajout pour résoudre l'erreur "Undefined array key "BASE_URI""
 if (!isset($_SERVER['BASE_URI'])) {
     $_SERVER['BASE_URI'] = '/';
@@ -74,7 +73,6 @@ $router->map('GET', '/logout', [
     'controller' => 'UserController',
     'method' => 'logout'
 ], 'logout');
-
 
 // on demande à AltoRouter de "matcher" la requête de l'utilisateur avec les routes mappées précédemment
 $match = $router->match();
