@@ -5,6 +5,15 @@
         <div class="card">
           <div class="card-body">
             <h1 class="text-center mb-4">Nouvel utilisateur</h1>
+              <?php if (!empty($viewData['errorList'])) : ?>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <?php foreach ($viewData['errorList'] as $error) : ?>
+                            <li><?= $error ?></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+              <?php endif ?>
             <form action="" method="post">
               <div class="mb-3">
                 <label for="firstNameInput" class="form-label">Prénom</label>
