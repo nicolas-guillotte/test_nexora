@@ -52,6 +52,8 @@ class UserController extends CoreController
           $user->setPicture($picturePath);
   
           $success = $userModel->insert($user);
+
+          $errorList = [];
   
           if($success) {
             // Redirection vers la page d'accueil
@@ -95,13 +97,13 @@ class UserController extends CoreController
                     header('Location: ' . $absoluteUrl);
                     exit;
                 } else {
-                    $error = "Mot de passe incorrect. Veuillez réessayer.";
+                    $error[] = "Mot de passe incorrect. Veuillez réessayer.";
                 }
             } else {
-                $error = "Aucun utilisateur trouvé avec cette adresse e-mail.";
+                $error[] = "Aucun utilisateur trouvé avec cette adresse e-mail.";
             }
         }
-
+        
         $this->show('login', [
             "pageTitle" => "Nexora - Connexion",
             "error" => $error

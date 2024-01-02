@@ -16,11 +16,13 @@
               </div>
               <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
             </form>
-            <?php if (isset($error)) : ?>
+            <?php if (isset($viewData['error'])) : 
+              foreach ($viewData['error'] as $error) : ?>
                 <div class="alert alert-danger mt-3">
                     <?= $error ?>
                 </div>
-            <?php endif; ?>
+              <?php endforeach;
+            endif; ?>
             <div class="text-center mt-3">
               <p>Vous n'avez pas de compte ?</p>
               <a href="<?= $router->generate('register') ?>" class="btn btn-secondary">Créer un compte</a>
