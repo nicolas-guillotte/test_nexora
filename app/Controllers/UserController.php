@@ -40,7 +40,7 @@ class UserController extends CoreController
           $lastName = cleanString($_POST['lastNameInput']);
         
           $email = filter_input(INPUT_POST, 'emailInput', FILTER_VALIDATE_EMAIL);
-          $password = password_hash($_POST['passwordInput'], PASSWORD_DEFAULT); // Hachage du mot de passe
+          $password = password_hash($_POST['passwordInput'], PASSWORD_DEFAULT);
   
           $user = new User();
           $user->setFirstName($firstName);
@@ -67,7 +67,7 @@ class UserController extends CoreController
       $this->show('register', [
         "pageTitle" => "Nexora - Création",
         "user" => $user,
-    ], $router->generate('register')); // Utilisez $sender_id au lieu de $user->getId() 
+    ], $router->generate('register'));
   }
 
     public function connect($params)
