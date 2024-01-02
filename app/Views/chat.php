@@ -3,7 +3,7 @@
   <section class="user margined">
     <div class="container mt-5">
       <div class="row">
-        <div class="col-md-3 offset-left"> <!-- Utilisation de la classe offset-left pour décaler vers la gauche -->
+        <div class="col-md-3 offset-left">
           <img
             src="<?= $_SERVER['BASE_URI'] ?>/assets/img/<?= $viewData['user']->getPicture() ?>"
             class="user-photo rounded-circle"
@@ -14,7 +14,6 @@
           <div class="media">
             <div class="media-body align-self-center">
               <h5 class="mt-0"><?= $viewData['user']->getFirstname() ?> <?= $viewData['user']->getLastname() ?></h5>
-              <!-- Ajoutez d'autres informations ici si nécessaire -->
             </div>
           </div>
         </div>
@@ -31,13 +30,13 @@
     <?php endforeach; ?>
 </section>
 <section class="send flex-grow-1 d-flex flex-column justify-content-end">
-    <form action="" method="post"> <!-- Remplacez "traiter_message.php" par le nom du script côté serveur qui traitera le message -->
+    <form action="" method="post">
       <div class="form-floating">
         <textarea
           class="form-control"
           placeholder="Leave a comment here"
           id="floatingTextarea"
-          name="message" <!-- Ajoutez un attribut name pour récupérer la valeur côté serveur --></textarea>
+          name="message"></textarea>
         <label for="floatingTextarea">Message</label>
       </div>
       <button type="submit" class="btn btn-primary mt-3">Envoyer</button>

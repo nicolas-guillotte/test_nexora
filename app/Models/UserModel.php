@@ -8,9 +8,6 @@ class User extends CoreModel
     private $picture;
     private $email;
 
-    // Active Record : des méthodes utilitaires (find(), findAll(), etc.) pour récupérer des enregistrements depuis la BDD
-
-    // la méthode find() permet de récupérer une marque en fonction de son $id
     public function find($id)
     {
         $pdo = Database::getPDO();

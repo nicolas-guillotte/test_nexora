@@ -1,22 +1,21 @@
   .user-photo {
-    width: 100px; /* Ajustez la taille de la photo */
+    width: 100px;
     height: 100px;
-    margin: 10px; /* Ajoutez des marges autour de la photo */
+    margin: 10px;
   }
 
   .messages {
-    margin-top: 20px; /* Ajoutez une marge en haut de la section des messages */
+    margin-top: 20px;
     overflow-y: auto;
     height: 80vh;
   }
 
   .send {
-    margin-top: 20px; /* Ajoutez une marge en haut de la section d'envoi de messages */
-    border: 1px solid #ccc; /* Ajoutez une bordure à la zone de message */
-    padding: 15px; /* Ajoutez du rembourrage à la zone de message */
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
   }
 
-  /* Ajoutez ces styles pour centrer la section "send" en bas de la page */
   html, body {
     height: 100%;
   }
@@ -39,15 +38,25 @@
   }
 
   .margined {
-    margin: 10px; /* Ajustez la valeur de la marge selon vos besoins */
+    margin: 10px;
   }
 
   .user-message {
-    margin-right: auto; /* Décaler vers la gauche */
+    margin-right: auto;
     width: 60%;
   }
 
   .other-message {
-    margin-left: auto; /* Décaler vers la droite */
+    margin-left: auto;
     width: 60%;
+  }
+
+  #underline {
+    text-decoration: none;
+    color: black;
+  }
+
+  #flex {
+    display: flex;
+    align-items: center;
   }

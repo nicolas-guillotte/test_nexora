@@ -1,21 +1,14 @@
 <?php
 
-/**
- * Classe CoreModel
- * cette classe sera héritée par tous les modèles de notre application
- * 
- * on y met donc toutes les propriétés & méthodes communes à chaque modèle
- */
 class CoreModel
 {
     protected $id;
     protected $created_at;
-    protected $db; // Nouvelle propriété pour stocker la connexion à la base de données
+    protected $db;
 
     public function __construct()
     {
-        // Initialisez $this->db avec votre objet de connexion à la base de données
-        $this->db = Database::getPDO(); // Assurez-vous que la classe Database est correctement définie
+        $this->db = Database::getPDO();
     }
 
     /**

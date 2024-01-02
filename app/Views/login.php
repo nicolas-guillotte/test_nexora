@@ -17,7 +17,6 @@
               <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
             </form>
             <?php if (isset($error)) : ?>
-                <!-- Display the error message -->
                 <div class="alert alert-danger mt-3">
                     <?= $error ?>
                 </div>

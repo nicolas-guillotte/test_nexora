@@ -39,7 +39,6 @@ class Message extends CoreModel
 
     public function insert()
     {
-        // Récupération de l'objet PDO représentant la connexion à la DB
         $pdo = Database::getPDO();
 
         $sql = "
@@ -47,30 +46,20 @@ class Message extends CoreModel
             VALUES (:sender_id, :receiver_id, :text)
         ";
 
-        // on prépare la requête avec la méthode prepare() de PDO
         $stmt = $pdo->prepare($sql);
 
-        // on "bind" (associe) nos valeurs avec les paramètres dans notre requête
         $stmt->bindParam(':sender_id', $this->sender_id);
         $stmt->bindParam(':receiver_id', $this->receiver_id);
         $stmt->bindParam(':text', $this->text);
 
-        // on exécute la requête préparée avec la méthode execute() de PDO   
-        // execute() renvoie true si tout s'est bien passé, false sinon
-        // on stocke true ou false dans une variable $status     
         $status = $stmt->execute();
 
-        // Si $status est true
         if ($status) {
-            // Alors on récupère l'id auto-incrémenté généré par MySQL
             $this->id = $pdo->lastInsertId();
 
-            // On retourne VRAI car l'ajout a parfaitement fonctionné
             return true;
-            // => l'interpréteur PHP sort de cette fonction car on a retourné une donnée
         }
 
-        // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
         return false;
     }
 
